@@ -425,6 +425,16 @@
 
   gCixTokenSpaceGuid.PcdCixProcessorVersion|L"CIX P1 CP8180"
 
+#PCIe Max ASPM Support
+  gCixTokenSpaceGuid.PcdPcieRootPort0MaxAspmSupport|0x02
+  gCixTokenSpaceGuid.PcdPcieRootPort1MaxAspmSupport|0x02
+  gCixTokenSpaceGuid.PcdPcieRootPort2MaxAspmSupport|0x02
+  gCixTokenSpaceGuid.PcdPcieRootPort3MaxAspmSupport|0x02
+  gCixTokenSpaceGuid.PcdPcieRootPort4MaxAspmSupport|0x02
+
+#SPCR Settings
+  gArmPlatformTokenSpaceGuid.PcdSerialDbgRegisterBase|0x040d0000
+  gArmPlatformTokenSpaceGuid.PcdSerialDbgInterrupt|330
 
 [PcdsDynamicDefault.common]
 

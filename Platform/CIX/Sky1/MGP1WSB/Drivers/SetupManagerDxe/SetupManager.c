@@ -530,7 +530,10 @@ UpdateMemoryType()
     }
   }
   HiiHandle = gSetupManagerPrivate.HiiHandle;
-  HiiSetString (HiiHandle, STRING_TOKEN (STR_MEMORY_TYPE_VALUE), MemTypeSting, NULL);
+  if (MemTypeSting != NULL) {
+    HiiSetString (HiiHandle, STRING_TOKEN (STR_MEMORY_TYPE_VALUE), MemTypeSting, NULL);
+  }
+
 }
 
 VOID

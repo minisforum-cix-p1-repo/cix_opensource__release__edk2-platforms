@@ -18,6 +18,13 @@ Device (I2C0) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_0_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 400000)
   Name (MXID, FixedPcdGet8 (PcdI2c0MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -66,7 +73,7 @@ Device (I2C0) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c0_apb"},
-        Package () { "clock-frequency", 400000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C0_EXT_DSD_PROPERTY
         I2C0_EXT_DSD_PROPERTY
 #endif
@@ -91,6 +98,13 @@ Device (I2C1) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_1_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 100000)
   Name (MXID, FixedPcdGet8 (PcdI2c1MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -105,7 +119,7 @@ Device (I2C1) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c1_apb"},
-        Package () { "clock-frequency", 100000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C1_EXT_DSD_PROPERTY
         I2C1_EXT_DSD_PROPERTY
 #endif
@@ -127,6 +141,13 @@ Device (I2C2) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_2_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 400000)
   Name (MXID, FixedPcdGet8 (PcdI2c2MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -145,7 +166,7 @@ Device (I2C2) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c2_apb"},
-        Package () { "clock-frequency", 400000 },
+        Package () { "clock-frequency", CLKF },
         Package () { "scl-gpios", Package () { ^I2C2, 0, 0, 0 } },
         Package () { "sda-gpios", Package () { ^I2C2, 0, 1, 0 } },
       }
@@ -172,6 +193,13 @@ Device (I2C3) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_3_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 400000)
   Name (MXID, FixedPcdGet8 (PcdI2c3MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -186,7 +214,7 @@ Device (I2C3) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c3_apb"},
-        Package () { "clock-frequency", 400000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C3_EXT_DSD_PROPERTY
         I2C3_EXT_DSD_PROPERTY
 #endif
@@ -208,6 +236,13 @@ Device (I2C4) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_4_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 400000)
   Name (MXID, FixedPcdGet8 (PcdI2c4MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -222,7 +257,7 @@ Device (I2C4) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c4_apb"},
-        Package () { "clock-frequency", 400000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C4_EXT_DSD_PROPERTY
         I2C4_EXT_DSD_PROPERTY
 #endif
@@ -244,6 +279,13 @@ Device (I2C5) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_5_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 400000)
   Name (MXID, FixedPcdGet8 (PcdI2c5MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -258,7 +300,7 @@ Device (I2C5) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c5_apb"},
-        Package () { "clock-frequency", 400000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C5_EXT_DSD_PROPERTY
         I2C5_EXT_DSD_PROPERTY
 #endif
@@ -280,6 +322,13 @@ Device (I2C6) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_6_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 400000)
   Name (MXID, FixedPcdGet8 (PcdI2c6MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -294,7 +343,7 @@ Device (I2C6) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c6_apb"},
-        Package () { "clock-frequency", 400000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C6_EXT_DSD_PROPERTY
         I2C6_EXT_DSD_PROPERTY
 #endif
@@ -316,6 +365,13 @@ Device (I2C7) {
         Return (0x0)
     }
   }
+  Method(_INI, 0) {
+    Local0 = GETV(ARV_FCH_I2C_7_FREQ_OFFSET)
+    Local0 = Local0*ARV_I2C_FREQ_UNIT_HZ
+    CLKF = Local0
+  }
+
+  Name (CLKF, 100000)
   Name (MXID, FixedPcdGet8 (PcdI2c7MutexId))
 
   Name (_CRS, ResourceTemplate () {
@@ -330,7 +386,7 @@ Device (I2C7) {
     ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301"),
       Package () {
         Package () {"ClockName", "fch_i2c7_apb"},
-        Package () { "clock-frequency", 100000 },
+        Package () { "clock-frequency", CLKF },
 #ifdef I2C7_EXT_DSD_PROPERTY
         I2C7_EXT_DSD_PROPERTY
 #endif

@@ -35,10 +35,22 @@ MEM_CONFIG_PHYPADCFG MemPhyPadCfg_x8 = {
   {
     .Signature      = MEM_CONFIG_BLOCK_PHYPADCFG_SIGNATURE,
     .BlockSize      = sizeof(MEM_CONFIG_PHYPADCFG) + sizeof(MEM_CONFIG_PHYPADCFG_ENTRY) * ENTRY_COUNT,
-    .BoardMask      = DRAM_16G_MASK | DRAM_32G_MASK
+    .BoardMask      = DRAM_16G_MASK 
   },
   {
     // MaxMemFreq       RankPerCh DqDrv   DqOdt   DqsDrv  DqsOdt  CkDrv   CaDrv   CsDrv   CkeDrv  FdbkDrv FdbkOdt  RstDrv FFE DFE CTLE
     {DDR6400_FREQUENCY, RANK_ALL, IMP_34, IMP_40, IMP_34, IMP_40, IMP_40, IMP_40, IMP_34, IMP_40, IMP_34, IMP_40,  IMP_34, 0,  0, 0x0},
+  }
+};
+
+MEM_CONFIG_PHYPADCFG MemPhyPadCfg_x8_meigao_32G = {
+  {
+    .Signature      = MEM_CONFIG_BLOCK_PHYPADCFG_SIGNATURE,
+    .BlockSize      = sizeof(MEM_CONFIG_PHYPADCFG) + sizeof(MEM_CONFIG_PHYPADCFG_ENTRY) * ENTRY_COUNT,
+    .BoardMask      = DRAM_32G_MASK
+  },
+  {
+    // MaxMemFreq       RankPerCh DqDrv   DqOdt   DqsDrv  DqsOdt  CkDrv   CaDrv   CsDrv   CkeDrv  FdbkDrv FdbkOdt  RstDrv FFE DFE CTLE
+    {DDR6400_FREQUENCY, RANK_ALL, IMP_34, IMP_60, IMP_34, IMP_40, IMP_40, IMP_60, IMP_34, IMP_40, IMP_34, IMP_40,  IMP_34, 0,  0, 0x2d},
   }
 };

@@ -12,7 +12,9 @@ extern MEM_CONFIG_BLOCK_FEATURE     MemFeatureBlock;
 extern MEM_CONFIG_BUSCFG_LP5        MemLpddr5BusCfg;
 extern MEM_CONFIG_PHYPADCFG         MemPhyPadCfg;
 extern MEM_CONFIG_BUSCFG_LP5        MemLpddr5BusCfg_x8;
+extern MEM_CONFIG_BUSCFG_LP5        MemLpddr5BusCfg_meigao_32G;
 extern MEM_CONFIG_PHYPADCFG         MemPhyPadCfg_x8;
+extern MEM_CONFIG_PHYPADCFG         MemPhyPadCfg_x8_meigao_32G;
 extern MEM_CONFIG_BIOS_SETUP        MemBiosSetup;
 extern MEM_CONFIG_DQ_SWAP           DqDmMapBlock;
 extern MEM_CONFIG_BDID_GET_METHOD   BoardIdGetMethod;
@@ -31,7 +33,9 @@ extern MEM_CONFIG_TRAIN_OPTIMIZE    MemTrainOptimize;
   CDCB_BLOCK(MemLpddr5BusCfg), \
   CDCB_BLOCK(MemPhyPadCfg), \
   CDCB_BLOCK(MemLpddr5BusCfg_x8), \
+  CDCB_BLOCK(MemLpddr5BusCfg_meigao_32G), \
   CDCB_BLOCK(MemPhyPadCfg_x8), \
+  CDCB_BLOCK(MemPhyPadCfg_x8_meigao_32G), \
   CDCB_BLOCK(DqDmMapBlock), \
   CDCB_BLOCK(MemTraceLenDiffCfg), \
   CDCB_BLOCK(MemTrainOptimize), \

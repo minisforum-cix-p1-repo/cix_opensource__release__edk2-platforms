@@ -100,26 +100,44 @@ LibSetTime (
   )
 {
   RTC_SET_I2C_REQUEST      Op;
-  RTC_SET_DATETIME_PACKET  Packet;
+  RTC_SET_DATETIME_PACKET  DataTimePacket;
+  RTC_SET_TIMEZONE_PACKET  TimeZonePacket;
   EFI_STATUS               Status;
 
-  Packet.DateTime.Seconds  = DecimalToBcd8 (Time->Second);
-  Packet.DateTime.Minutes  = DecimalToBcd8 (Time->Minute);
-  Packet.DateTime.Hours    = DecimalToBcd8 (Time->Hour);
-  Packet.DateTime.Days     = DecimalToBcd8 (Time->Day);
-  Packet.DateTime.Weekdays = BIT0;
-  Packet.DateTime.Months   = DecimalToBcd8 (Time->Month);
-  Packet.DateTime.Years    = DecimalToBcd8 (Time->Year % 100);
+  DataTimePacket.DateTime.Seconds  = DecimalToBcd8 (Time->Second);
+  DataTimePacket.DateTime.Minutes  = DecimalToBcd8 (Time->Minute);
+  DataTimePacket.DateTime.Hours    = DecimalToBcd8 (Time->Hour);
+  DataTimePacket.DateTime.Days     = DecimalToBcd8 (Time->Day);
+  DataTimePacket.DateTime.Weekdays = BIT0;
+  DataTimePacket.DateTime.Months   = DecimalToBcd8 (Time->Month);
+  DataTimePacket.DateTime.Years    = DecimalToBcd8 (Time->Year % 100);
   if (Time->Year >= EPOCH_BASE + 100) {
     return EFI_DEVICE_ERROR;
   }
 
-  Packet.Reg = RA8900CE_DATA_REG_OFFSET;
+  DataTimePacket.Reg = RA8900CE_DATA_REG_OFFSET;
 
   Op.OperationCount             = 1;
   Op.Operation[0].Flags         = 0;
   Op.Operation[0].LengthInBytes = sizeof (RTC_SET_DATETIME_PACKET);
-  Op.Operation[0].Buffer        = (VOID *)&Packet;
+  Op.Operation[0].Buffer        = (VOID *)&DataTimePacket;
+
+  Status = I2cMasterXfer (mHost, SLAVE_ADDRESS, (VOID *)&Op);
+  if (EFI_ERROR (Status)) {
+    return EFI_DEVICE_ERROR;
+  }
+
+  if (!IsValidTimeZone (Time->TimeZone)) {
+    return EFI_INVALID_PARAMETER;
+  }
+
+  TimeZonePacket.Reg      = RA8900CE_TMR_CNT_REG_OFFSET;
+  TimeZonePacket.TimeZone = Time->TimeZone;
+
+  Op.OperationCount             = 1;
+  Op.Operation[0].Flags         = 0;
+  Op.Operation[0].LengthInBytes = sizeof (RTC_SET_TIMEZONE_PACKET);
+  Op.Operation[0].Buffer        = (VOID *)&TimeZonePacket;
 
   Status = I2cMasterXfer (mHost, SLAVE_ADDRESS, (VOID *)&Op);
   if (EFI_ERROR (Status)) {
@@ -253,7 +271,7 @@ LibGetWakeupTime (
     Status = I2cMasterXfer (mHost, SLAVE_ADDRESS, (VOID *)&GetOp);
     if (!EFI_ERROR (Status)) {
       Time->Month = BcdToDecimal8 (Buffer[1] & RA8900CE_MONTHS_MASK);
-      Time->Year  = BcdToDecimal8 (Buffer[2] & RA8900CE_YEARS_MASK);
+      Time->Year  = BcdToDecimal8 (Buffer[2] & RA8900CE_YEARS_MASK) + EPOCH_BASE;
     } else {
       DEBUG ((DEBUG_INFO, "Get RTC month and year error!\n"));
       return EFI_DEVICE_ERROR;
@@ -319,7 +337,7 @@ LibSetWakeupTime (
       DEBUG ((DEBUG_INFO, "Time can't reset\n"));
     } else {
       // Set Time:
-      // We use realtime as Time->Year and Time->Monty,
+      // We use realtime as Time->Year and Time->Month,
       // and we use set time as Day, Hour and Minute.
       // Then the other filed in Time is zero.
       Time->Minute = BcdToDecimal8 (Buffer[1] & RA8900CE_MINUTES_MASK);
@@ -341,7 +359,7 @@ LibSetWakeupTime (
       Status = I2cMasterXfer (mHost, SLAVE_ADDRESS, (VOID *)&GetOp);
       if (!EFI_ERROR (Status)) {
         Time->Month = BcdToDecimal8 (Buffer[1] & RA8900CE_MONTHS_MASK);
-        Time->Year  = BcdToDecimal8 (Buffer[2] & RA8900CE_YEARS_MASK);
+        Time->Year  = BcdToDecimal8 (Buffer[2] & RA8900CE_YEARS_MASK) + EPOCH_BASE;
       } else {
         DEBUG ((DEBUG_INFO, "Get RTC month and year error!\n"));
         return EFI_DEVICE_ERROR;

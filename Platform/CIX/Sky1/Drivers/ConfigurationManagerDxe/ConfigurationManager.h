@@ -28,7 +28,8 @@
                                                                       Mpidr,                                                            \
                                                                       PmuIrq,                                                           \
                                                                       VGicIrq,                                                          \
-                                                                      EnergyEfficiency                                                  \
+                                                                      EnergyEfficiency,                                                 \
+                                                                      SpeOverflowInterrupt                                              \
                                                                       )  {\
   CPUInterfaceNumber,       /* UINT32  CPUInterfaceNumber         */  \
   CPUInterfaceNumber,       /* UINT32  AcpiProcessorUid           */  \
@@ -42,7 +43,8 @@
   VGicIrq,                  /* UINT32  VGICMaintenanceInterrupt   */  \
   0,                        /* UINT64  GICRBaseAddress            */  \
   Mpidr,                    /* UINT64  MPIDR                      */  \
-  EnergyEfficiency          /* UINT8   ProcessorPowerEfficiency   */  \
+  EnergyEfficiency,          /* UINT8   ProcessorPowerEfficiency   */  \
+  SpeOverflowInterrupt          /* UINT8   SpeOverflowInterrupt   */  \
 }
 
 ///

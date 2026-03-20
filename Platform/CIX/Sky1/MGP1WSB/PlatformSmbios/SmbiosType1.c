@@ -12,7 +12,7 @@
   "Micro Computer (HK) Tech Limited\0"   /* Manufacturer */                                \
   "MS-R1\0"                        /* Product Name */                                \
   "1.0\0"                              /* Version */                                     \
-  "System Serial Number\0"             /* Serial number */                               \
+  "MG System Serial Number\0"             /* Serial number */                               \
   "MGP1WSB\0"                          /* SKUNumber */                                   \
   "MINISFORUM\0"                          /* System Family */                               \
   "MS-R1\0"                  /* Product Name 0*/                               \
@@ -64,8 +64,8 @@ AddSmbiosType1 (
   EC_RESPONSE_BOARD_ID     *pBoardId;
   UINT16                   Sku;
   UINTN                    StringNumber, SysSnSize, SysUuidSize;
-  CHAR8                    *SysSnPtr;
-  CHAR8                    *SysSnBuf, *SysUuidPtr;
+  CHAR8                    *SysSnPtr = NULL;
+  CHAR8                    *SysSnBuf = NULL, *SysUuidPtr = NULL;
 
   Status = gBS->LocateProtocol (
                   &gCixFwVersionProtocolGuid,
@@ -104,7 +104,6 @@ AddSmbiosType1 (
                          );
   if (!EFI_ERROR (Status)) {
     CopyMem ((CHAR8 *)&(mPlatformDefaultType1.Base.Uuid), SysUuidPtr, 16);
-    FreePool (SysSnPtr);
   }
 
   SmbiosHandle = SMBIOS_HANDLE_PI_RESERVED;

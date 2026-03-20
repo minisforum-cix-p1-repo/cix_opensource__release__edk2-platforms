@@ -52,18 +52,18 @@
    GIC_ENTRY (CPUInterfaceNumber, Mpidr, PmuIrq, VGicIrq, EnergyEfficiency)
  */
 #define PLAT_GIC_CPU_INTERFACE  {                           \
-             GICC_ENTRY (0,  GET_MPID (0, 0),  23, 0x19, 0), \
-             GICC_ENTRY (1,  GET_MPID (1, 0),  23, 0x19, 0), \
-             GICC_ENTRY (2,  GET_MPID (2, 0),  23, 0x19, 0), \
-             GICC_ENTRY (3,  GET_MPID (3, 0),  23, 0x19, 0), \
-             GICC_ENTRY (4,  GET_MPID (4, 0),  23, 0x19, 0), \
-             GICC_ENTRY (5,  GET_MPID (5, 0),  23, 0x19, 0), \
-             GICC_ENTRY (6,  GET_MPID (6, 0),  23, 0x19, 0), \
-             GICC_ENTRY (7,  GET_MPID (7, 0),  23, 0x19, 0), \
-             GICC_ENTRY (8,  GET_MPID (8, 0),  23, 0x19, 0), \
-             GICC_ENTRY (9,  GET_MPID (9, 0),  23, 0x19, 0), \
-             GICC_ENTRY (10,  GET_MPID (10, 0), 23, 0x19, 0), \
-             GICC_ENTRY (11,  GET_MPID (11, 0), 23, 0x19, 0), \
+             GICC_ENTRY (0,  GET_MPID (0, 0),  23, 0x19, 0, 0), \
+             GICC_ENTRY (1,  GET_MPID (1, 0),  23, 0x19, 0, 0), \
+             GICC_ENTRY (2,  GET_MPID (2, 0),  23, 0x19, 0, 0), \
+             GICC_ENTRY (3,  GET_MPID (3, 0),  23, 0x19, 0, 0), \
+             GICC_ENTRY (4,  GET_MPID (4, 0),  23, 0x19, 0, 21), \
+             GICC_ENTRY (5,  GET_MPID (5, 0),  23, 0x19, 0, 21), \
+             GICC_ENTRY (6,  GET_MPID (6, 0),  23, 0x19, 0, 21), \
+             GICC_ENTRY (7,  GET_MPID (7, 0),  23, 0x19, 0, 21), \
+             GICC_ENTRY (8,  GET_MPID (8, 0),  23, 0x19, 0, 21), \
+             GICC_ENTRY (9,  GET_MPID (9, 0),  23, 0x19, 0, 21), \
+             GICC_ENTRY (10,  GET_MPID (10, 0), 23, 0x19, 0, 21), \
+             GICC_ENTRY (11,  GET_MPID (11, 0), 23, 0x19, 0, 21), \
 }
 
 #define PLAT_GIC_DISTRIBUTOR_INFO                                      \

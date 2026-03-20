@@ -9,11 +9,11 @@
 #include <Protocol/EcPlatformProtocol.h>
 
 #define TYPE2_STRINGS                                                         \
-  "Shenzhen Meigao Electronic Equipment Co.,Ltd\0"   /* Manufacturer */                                \
+  "Meigao Innovation Technology (Shenzhen) Co., Ltd\0"   /* Manufacturer */                                \
   "P1WSB\0"                        /* Product Name */                                \
   "1.0\0"                              /* Version */                                     \
-  "Base Board Serial Number\0"         /* Serial */                                      \
-  "Base Board Asset Tag\0"             /* Assert Tag */                                  \
+  "MG Base Board Serial Number\0"         /* Serial */                                      \
+  "MG Base Board Asset Tag\0"             /* Assert Tag */                                  \
   "Part Component\0"                   /* board location */                              \
   "P1WSB\0"                  /* Product Name 0*/                               \
   "P1WSB\0"                 /* Product Name 1*/

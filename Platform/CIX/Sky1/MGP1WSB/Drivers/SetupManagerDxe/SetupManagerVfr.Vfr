@@ -112,11 +112,11 @@ suppressif ideqval SystemTableVar.SystemTableSelect == 0x01;
       prompt = STRING_TOKEN(STR_SOC_FORM_SET_TITLE),
       help = STRING_TOKEN(STR_SOC_FORM_SET_TITLE_HELP);
 endif;
-
+suppressif TRUE;
     goto PLATFORM_FORM_SET_ID,
       prompt = STRING_TOKEN(STR_PLATFORM_FORM_SET_TITLE),
       help = STRING_TOKEN(STR_PLATFORM_FORM_SET_TITLE_HELP);
-
+endif;
     label LABEL_PRIVATE_FORM_LIST;
     label LABEL_PRIVATE_FORM_END;
 
@@ -208,6 +208,14 @@ endif;
     goto I2C_CONFIG_FORM_ID,
       prompt = STRING_TOKEN(STR_I2C_FORM_SET_TITLE),
       help   = STRING_TOKEN(STR_I2C_FORM_SET_TITLE_HELP);
+
+    oneof varid   = PlatformSetupVar.SpcrEnable,
+      prompt      = STRING_TOKEN(STR_ENABLE_SPCR_TABLE),
+      help        = STRING_TOKEN(STR_ENABLE_SPCR_TABLE_HELP),
+      default     = FixedPcdGet8 (PcdAcpiSpcrEnable),
+      option text = STRING_TOKEN(STR_DISABLED), value = 0, flags = RESET_REQUIRED;
+      option text = STRING_TOKEN(STR_ENABLED), value = 1, flags = RESET_REQUIRED;
+    endoneof;
 
     // goto GMAC_CONFIG_FORM_ID,
     //   prompt = STRING_TOKEN(STR_GMAC_FORM_SET_TITLE),
