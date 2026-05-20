@@ -387,7 +387,7 @@
 !else
   gEfiMdeModulePkgTokenSpaceGuid.PcdVariableCollectStatistics|TRUE
 !endif
-
+  gEfiMdeModulePkgTokenSpaceGuid.PcdPciBusHotplugDeviceSupport|FALSE
 [PcdsDynamicExDefault.common.DEFAULT]
 !if $(CAPSULE_ENABLE)                                    #351c9808-4b53-4363-9314-d339386e5685
   gEfiSignedCapsulePkgTokenSpaceGuid.PcdEdkiiSystemFirmwareImageDescriptor|{0x0}|VOID*|0x100
